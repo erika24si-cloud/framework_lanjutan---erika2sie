@@ -1,7 +1,7 @@
 function Foto() {
   return (
     <img 
-      src="https://i.pinimg.com/564x/ec/d0/1a/ecd01af653e9988359ef441c1ab9ba7a.jpg" 
+      src="https://i.pinimg.com/736x/dd/8b/a9/dd8ba98ba0b06489ac96f76b74fe7fc6.jpg" 
       alt="foto" 
       className="foto"
     />
