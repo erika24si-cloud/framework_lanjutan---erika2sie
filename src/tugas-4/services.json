@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Laundry Express",
+    "description": "Layanan cuci pakaian cepat dan bersih.",
+    "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "CleanCo", "yearEstablished": 2015, "location": "Pekanbaru", "contact": "08123456789" },
+    "tags": ["Cleaning", "Laundry", "Express", "Daily Needs"]
+  },
+  {
+    "id": 2,
+    "name": "Home Cleaning",
+    "description": "Jasa bersih rumah profesional dan terpercaya.",
+    "image": "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "Sparkle Home", "yearEstablished": 2018, "location": "Pekanbaru", "contact": "082233445566" },
+    "tags": ["Cleaning", "Home Service", "Hygiene", "Professional"]
+  },
+  {
+    "id": 3,
+    "name": "Car Wash Premium",
+    "description": "Cuci mobil dengan hasil kinclong dan cepat.",
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "AutoClean", "yearEstablished": 2016, "location": "Pekanbaru", "contact": "083344556677" },
+    "tags": ["Automotive", "Car Care", "Premium", "Wash"]
+  },
+  {
+    "id": 4,
+    "name": "AC Repair Service",
+    "description": "Perbaikan dan maintenance AC profesional.",
+    "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "CoolTech", "yearEstablished": 2014, "location": "Pekanbaru", "contact": "081122334455" },
+    "tags": ["Repair", "Technician", "AC", "Maintenance"]
+  },
+  {
+    "id": 5,
+    "name": "Salon & Haircut",
+    "description": "Layanan potong rambut dan styling modern.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "StyleHub", "yearEstablished": 2017, "location": "Pekanbaru", "contact": "085566778899" },
+    "tags": ["Beauty", "Haircut", "Salon", "Style"]
+  },
+  {
+    "id": 6,
+    "name": "Massage & Spa",
+    "description": "Relaksasi tubuh dengan layanan pijat profesional.",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "RelaxZone", "yearEstablished": 2019, "location": "Pekanbaru", "contact": "085500112233" },
+    "tags": ["Wellness", "Massage", "Relax", "Spa"]
+  },
+  {
+    "id": 7,
+    "name": "Laptop Repair",
+    "description": "Perbaikan laptop cepat dan terpercaya.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "TechFix", "yearEstablished": 2013, "location": "Pekanbaru", "contact": "086677889900" },
+    "tags": ["Repair", "Technology", "Laptop", "Service"]
+  },
+  {
+    "id": 8,
+    "name": "Photography Service",
+    "description": "Jasa fotografi untuk berbagai acara.",
+    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "CaptureMoment", "yearEstablished": 2020, "location": "Pekanbaru", "contact": "087788990011" },
+    "tags": ["Photography", "Event", "Camera", "Creative"]
+  },
+  {
+    "id": 9,
+    "name": "Catering Service",
+    "description": "Layanan katering untuk acara keluarga dan kantor.",
+    "image": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "Delicious Catering", "yearEstablished": 2012, "location": "Pekanbaru", "contact": "088899001122" },
+    "tags": ["Food", "Catering", "Event", "Service"]
+  },
+  {
+    "id": 10,
+    "name": "Event Organizer",
+    "description": "Mengatur acara dengan konsep kreatif dan profesional.",
+    "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "EventPro", "yearEstablished": 2011, "location": "Pekanbaru", "contact": "089900112233" },
+    "tags": ["Event", "Organizer", "Planning", "Creative"]
+  },
+  {
+    "id": 11,
+    "name": "Bike Repair",
+    "description": "Servis dan perbaikan sepeda profesional.",
+    "image": "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "BikeCare", "yearEstablished": 2016, "location": "Pekanbaru", "contact": "081900112233" },
+    "tags": ["Automotive", "Bike", "Repair", "Service"]
+  },
+  {
+    "id": 12,
+    "name": "Pet Grooming",
+    "description": "Perawatan dan grooming hewan peliharaan.",
+    "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "PetCare", "yearEstablished": 2019, "location": "Pekanbaru", "contact": "082100223344" },
+    "tags": ["Pet", "Grooming", "Care", "Animal"]
+  },
+  {
+    "id": 13,
+    "name": "Private Tutor",
+    "description": "Les privat untuk berbagai mata pelajaran.",
+    "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "SmartEdu", "yearEstablished": 2017, "location": "Pekanbaru", "contact": "083200334455" },
+    "tags": ["Education", "Tutor", "Learning", "Private"]
+  },
+  {
+    "id": 14,
+    "name": "Makeup Artist",
+    "description": "Jasa makeup untuk acara spesial.",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "GlowBeauty", "yearEstablished": 2018, "location": "Pekanbaru", "contact": "084300445566" },
+    "tags": ["Beauty", "Makeup", "Artist", "Event"]
+  },
+  {
+    "id": 15,
+    "name": "Plumbing Service",
+    "description": "Perbaikan instalasi air dan pipa.",
+    "image": "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "WaterFix", "yearEstablished": 2013, "location": "Pekanbaru", "contact": "085400556677" },
+    "tags": ["Repair", "Plumbing", "Home", "Service"]
+  },
+  {
+    "id": 16,
+    "name": "Electrician",
+    "description": "Jasa instalasi dan perbaikan listrik.",
+    "image": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "ElectroPro", "yearEstablished": 2012, "location": "Pekanbaru", "contact": "086500667788" },
+    "tags": ["Electric", "Repair", "Technician", "Service"]
+  },
+  {
+    "id": 17,
+    "name": "Moving Service",
+    "description": "Jasa pindahan rumah/kantor cepat dan aman.",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "MoveIt", "yearEstablished": 2015, "location": "Pekanbaru", "contact": "087600778899" },
+    "tags": ["Logistics", "Moving", "Transport", "Service"]
+  },
+  {
+    "id": 18,
+    "name": "Food Delivery",
+    "description": "Layanan antar makanan cepat dan praktis.",
+    "image": "https://images.unsplash.com/photo-1511689660979-10d2b1aada49?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "FoodFast", "yearEstablished": 2020, "location": "Pekanbaru", "contact": "088700889900" },
+    "tags": ["Food", "Delivery", "Service", "Fast"]
+  },
+  {
+    "id": 19,
+    "name": "Gardening Service",
+    "description": "Perawatan taman agar tetap hijau dan indah.",
+    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "GreenCare", "yearEstablished": 2014, "location": "Pekanbaru", "contact": "089800990011" },
+    "tags": ["Garden", "Maintenance", "Outdoor", "Service"]
+  },
+  {
+    "id": 20,
+    "name": "Security Service",
+    "description": "Layanan keamanan untuk rumah dan acara.",
+    "image": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80",
+    "details": { "provider": "SafeGuard", "yearEstablished": 2011, "location": "Pekanbaru", "contact": "081111223344" },
+    "tags": ["Security", "Safety", "Guard", "Service"]
+  }
+]
