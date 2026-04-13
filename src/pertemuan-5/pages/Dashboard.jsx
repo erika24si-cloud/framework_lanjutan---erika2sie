@@ -6,7 +6,6 @@ export default function Dashboard() {
         <div id="dashboard-container" className="pb-10 bg-gray-50/50 min-h-screen">
             <PageHeader />
 
-            {/* --- GRID STATISTIK --- */}
             <div id="dashboard-grid" className="p-5 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <div id="dashboard-orders" className="flex items-center space-x-5 bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
                     <div className="bg-hijau rounded-2xl p-4">
@@ -49,10 +48,8 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            {/* --- KONTEN UTAMA BAWAH --- */}
             <div className="px-5 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                {/* 1. DESAIN BARU: RECENT ORDERS (List Style) */}
                 <div className="lg:col-span-2 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                     <div className="flex justify-between items-center mb-8">
                         <div>
@@ -96,7 +93,6 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                {/* 2. IMPROVISASI: RUNNING OUT (Simple & Clean) */}
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                     <div className="flex items-center space-x-3 mb-8 text-red-500">
                         <FaExclamationTriangle className="text-xl" />
