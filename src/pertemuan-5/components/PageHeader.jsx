@@ -1,5 +1,4 @@
 export default function PageHeader() {
-    // --- IMPROVISASI SEDERHANA: PESAN SAPAAN ---
     const jam = new Date().getHours();
     let sapaan = "Selamat Pagi";
 
