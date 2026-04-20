@@ -13,7 +13,7 @@ export default function Sidebar() {
     return (
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
             
-            <div id="sidebar-logo" className="flex flex-col">
+            <div className="flex flex-col">
                 <span className="font-poppins text-[48px] font-bold text-gray-900 leading-tight">
                     Sedap <b className="text-hijau">.</b>
                 </span>
@@ -43,6 +43,26 @@ export default function Sidebar() {
                             <span>Customers</span>
                         </NavLink>
                     </li>
+
+                    {/* 🔥 Tambahan menu error */}
+                    <li>
+                        <NavLink to="/error-400" className={menuClass}>
+                            <span>Error 400</span>
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/error-401" className={menuClass}>
+                            <span>Error 401</span>
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/error-403" className={menuClass}>
+                            <span>Error 403</span>
+                        </NavLink>
+                    </li>
+
                 </ul>
             </div>
 
