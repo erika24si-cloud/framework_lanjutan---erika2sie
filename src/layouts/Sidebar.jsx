@@ -44,7 +44,6 @@ export default function Sidebar() {
                         </NavLink>
                     </li>
 
-                    {/* 🔥 Tambahan menu error */}
                     <li>
                         <NavLink to="/error-400" className={menuClass}>
                             <span>Error 400</span>
