@@ -1,46 +1,44 @@
 import { useState } from "react";
-import PageHeader from "../components/PageHeader";
+import PageHeader from "../../components/PageHeader";
 
-const orders = Array.from({ length: 30 }, (_, i) => ({
-  id: `#ORD-${1000 + i}`,
+const customers = Array.from({ length: 30 }, (_, i) => ({
+  id: `CUST-${100 + i}`,
   name: `Customer ${i + 1}`,
-  status: ["Pending", "Completed", "Cancelled"][i % 3],
-  total: `Rp ${10000 * (i + 1)}`,
-  date: `2025-04-${(i % 30) + 1}`
+  email: `customer${i + 1}@mail.com`,
+  phone: `08123${i}4567`,
+  loyalty: ["Bronze", "Silver", "Gold"][i % 3],
 }));
 
-export default function Orders() {
+export default function Customers() {
   const [showForm, setShowForm] = useState(false);
 
   return (
     <div className="p-5">
       <PageHeader
-        title="Orders"
-        breadcrumb={["Dashboard", "Orders"]}
+        title="Customers"
+        breadcrumb={["Dashboard", "Customers"]}
       >
         <button
           onClick={() => setShowForm(true)}
           className="bg-hijau text-white px-4 py-2 rounded-xl hover:opacity-90"
         >
-          Add Orders
+          Add Customer
         </button>
       </PageHeader>
 
       {showForm && (
         <div className="bg-white p-5 rounded-xl mb-5 shadow-sm">
-          <h3 className="font-bold mb-3">Form Orders</h3>
+          <h3 className="font-bold mb-3">Form Customer</h3>
 
-          <input className="border p-2 mb-2 w-full rounded" placeholder="Order ID" />
           <input className="border p-2 mb-2 w-full rounded" placeholder="Customer Name" />
+          <input className="border p-2 mb-2 w-full rounded" placeholder="Email" />
+          <input className="border p-2 mb-2 w-full rounded" placeholder="Phone" />
 
           <select className="border p-2 mb-2 w-full rounded">
-            <option>Pending</option>
-            <option>Completed</option>
-            <option>Cancelled</option>
+            <option>Bronze</option>
+            <option>Silver</option>
+            <option>Gold</option>
           </select>
-
-          <input className="border p-2 mb-2 w-full rounded" placeholder="Total Price" />
-          <input type="date" className="border p-2 mb-2 w-full rounded" />
 
           <button
             onClick={() => setShowForm(false)}
@@ -55,34 +53,33 @@ export default function Orders() {
 
         <div className="grid grid-cols-5 font-bold text-gray-600 border-b pb-2 mb-2 text-sm">
           <span>ID</span>
-          <span>Customer</span>
-          <span>Status</span>
-          <span>Total</span>
-          <span>Date</span>
+          <span>Name</span>
+          <span>Email</span>
+          <span>Phone</span>
+          <span>Loyalty</span>
         </div>
 
-        {orders.map((o, i) => (
+        {customers.map((c, i) => (
           <div
             key={i}
             className="grid grid-cols-5 py-2 border-b text-sm items-center hover:bg-gray-50"
           >
-            <span>{o.id}</span>
-            <span>{o.name}</span>
+            <span>{c.id}</span>
+            <span>{c.name}</span>
+            <span>{c.email}</span>
+            <span>{c.phone}</span>
 
             <span
               className={
-                o.status === "Pending"
+                c.loyalty === "Gold"
                   ? "text-yellow-500 font-semibold"
-                  : o.status === "Completed"
-                  ? "text-green-500 font-semibold"
-                  : "text-red-500 font-semibold"
+                  : c.loyalty === "Silver"
+                  ? "text-gray-500 font-semibold"
+                  : "text-orange-500 font-semibold"
               }
             >
-              {o.status}
+              {c.loyalty}
             </span>
-
-            <span>{o.total}</span>
-            <span>{o.date}</span>
           </div>
         ))}
       </div>

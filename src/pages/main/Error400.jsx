@@ -1,9 +1,9 @@
-import ErrorPage from "../components/ErrorPage";
+import ErrorPage from "../../components/ErrorPage";
 
 export default function Error400() {
   return (
     <ErrorPage
-      code="401"
+      code="400"
       message="Bad Request"
       image="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
     />
