@@ -1,49 +1,51 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react"; 
 import { Routes, Route } from "react-router-dom";
 
-import LoadingScreen from "./components/project/LoadingScreen"; 
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Error400 from "./pages/main/Error400";
+import Error401 from "./pages/main/Error401";
+import Error403 from "./pages/main/Error403";
 
-const MainLayout = lazy(() => import("./layouts/project/MainLayout"));
-const AuthLayout = lazy(() => import("./layouts/project/AuthLayout"));
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
+const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
+const Dashboard = React.lazy(() => import("./pages/main/Dashboard"));
+const Orders = React.lazy(() => import("./pages/main/Orders"));
+const Customers = React.lazy(() => import("./pages/main/Customers"));
 
-const Login = lazy(() => import("./pages/auth/project/Login"));
-const Register = lazy(() => import("./pages/auth/project/Register"));
+const Produk = React.lazy(() => import("./pages/main/Produk")); // Sesuaikan path-nya ya!
+const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"));
 
-const Hero = lazy(() => import("./components/project/Hero"));
-const Stats = lazy(() => import("./components/project/Stats"));
-const Booking = lazy(() => import("./components/project/Booking"));
-const Services = lazy(() => import("./components/project/Services"));
-const Facilities = lazy(() => import("./components/project/Facilities"));
-const Groomers = lazy(() => import("./components/project/Groomers"));
-const Blog = lazy(() => import("./components/project/Blog"));
+const NotFound = React.lazy(() => import("./pages/main/NotFound"));
+const Register = React.lazy(() => import("./pages/auth/Register"));
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
+const Login = React.lazy(() => import("./pages/auth/Login"));
+const Loading = React.lazy(() => import("./components/Loading"));
 
 export default function App() {
   return (
-    <Suspense fallback={<LoadingScreen />}>
+    <Suspense fallback={<Loading />}>
       <Routes>
-        
         <Route element={<MainLayout />}>
-          <Route 
-            path="/" 
-            element={
-              <>
-                <Hero />
-                <Stats />
-                <Booking />
-                <Services />
-                <Facilities />
-                <Groomers />
-                <Blog />
-              </>
-            } 
-          />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
+          
+          // 👇 TAMBAHKAN RUTENYA DI SINI
+          <Route path="/products" element={<Produk />} /> 
+          
+          <Route path="/products/:id" element={<ProductDetail />} /> 
+          <Route path="/error-400" element={<Error400 />} />
+          <Route path="/error-401" element={<Error401 />} />
+          <Route path="/error-403" element={<Error403 />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
         </Route>
-
       </Routes>
     </Suspense>
   );

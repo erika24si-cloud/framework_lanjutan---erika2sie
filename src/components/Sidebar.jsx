@@ -36,11 +36,19 @@ export default function Sidebar() {
                             <span>Orders</span>
                         </NavLink>
                     </li>
+                    
 
                     <li>
                         <NavLink to="/customers" className={menuClass}>
                             <MdPeople className="mr-4 text-xl" />
                             <span>Customers</span>
+                        </NavLink>
+                    </li>
+                    
+                    <li>
+                        <NavLink to="/products" className={menuClass}>
+                            <MdListAlt className="mr-4 text-xl" />
+                            <span>Products</span>
                         </NavLink>
                     </li>
 
