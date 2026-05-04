@@ -13,7 +13,7 @@ const Dashboard = React.lazy(() => import("./pages/main/Dashboard"));
 const Orders = React.lazy(() => import("./pages/main/Orders"));
 const Customers = React.lazy(() => import("./pages/main/Customers"));
 
-const Produk = React.lazy(() => import("./pages/main/Produk")); // Sesuaikan path-nya ya!
+const Produk = React.lazy(() => import("./pages/main/Produk")); 
 const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"));
 
 const NotFound = React.lazy(() => import("./pages/main/NotFound"));
@@ -30,10 +30,7 @@ export default function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
-          
-          // 👇 TAMBAHKAN RUTENYA DI SINI
           <Route path="/products" element={<Produk />} /> 
-          
           <Route path="/products/:id" element={<ProductDetail />} /> 
           <Route path="/error-400" element={<Error400 />} />
           <Route path="/error-401" element={<Error401 />} />

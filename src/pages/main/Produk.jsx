@@ -32,13 +32,8 @@ return (
         breadcrumb={["Dashboard", "Product List"]}
       />
 
-      {/* Container utama: 
-        Ditambahkan p-6 agar SEMUA isinya (input & tabel) 
-        punya batas kiri-kanan yang sama rata 
-      */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 mt-6 p-6">
         
-        {/* Input Pencarian */}
         <input
           type="text"
           placeholder="Cari produk..."
@@ -47,8 +42,6 @@ return (
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {/* Tabel Produk */}
-        {/* Ditambahkan rounded-lg dan border agar ujung tabel hijaunya melengkung rapi */}
         <div className="overflow-x-auto rounded-lg border border-gray-200">
           <table className="w-full border-collapse text-sm">
             <thead>
