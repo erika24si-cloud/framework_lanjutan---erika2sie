@@ -59,6 +59,13 @@ export default function Sidebar() {
                         </NavLink>
                     </li>
 
+                     <li>
+                        <NavLink to="/fitur-xyz" className={menuClass}>
+                            <MdListAlt className="mr-4 text-xl" />
+                            <span>Fitur XYZ</span>
+                        </NavLink>
+                    </li>
+
                     <li>
                         <NavLink to="/error-400" className={menuClass}>
                             <span>Error 400</span>
