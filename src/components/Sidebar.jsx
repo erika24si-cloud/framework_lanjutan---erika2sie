@@ -67,6 +67,13 @@ export default function Sidebar() {
                     </li>
 
                     <li>
+                        <NavLink to="/notes" className={menuClass}>
+                            <MdListAlt className="mr-4 text-xl" />
+                            <span>Notes</span>
+                        </NavLink>
+                    </li>
+
+                    <li>
                         <NavLink to="/error-400" className={menuClass}>
                             <span>Error 400</span>
                         </NavLink>

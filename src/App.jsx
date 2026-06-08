@@ -12,6 +12,7 @@ const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 const Dashboard = React.lazy(() => import("./pages/main/Dashboard"));
 const Orders = React.lazy(() => import("./pages/main/Orders"));
 const Customers = React.lazy(() => import("./pages/main/Customers"));
+const Note = React.lazy(() => import("./pages/main/Note"));
 
 const Produk = React.lazy(() => import("./pages/main/Produk")); 
 const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"));
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/products/:id" element={<ProductDetail />} /> 
           <Route path="/components" element={<Components />} />
           <Route path="/fitur-xyz" element={<FiturXyz />} />
+          <Route path="/notes" element={<Note />} />
           <Route path="/error-400" element={<Error400 />} />
           <Route path="/error-401" element={<Error401 />} />
           <Route path="/error-403" element={<Error403 />} />
