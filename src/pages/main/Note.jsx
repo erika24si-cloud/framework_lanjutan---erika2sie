@@ -48,7 +48,7 @@ export default function Note() {
             loadNotes()
             
         } catch (err) {
-            setError(Terjadi kesalahan: ${err.message});
+            setError(`Terjadi kesalahan: ${err.message}`);
         } finally {
             setLoading(false)
         }
@@ -87,7 +87,7 @@ export default function Note() {
             // Refresh data
             loadNotes()
         } catch (err) {
-            setError(Terjadi kesalahan: ${err.message})
+            setError(`Terjadi kesalahan: ${err.message}`);
         } finally {
             setLoading(false)
         }
