@@ -1,11 +1,10 @@
-import axios from "axios";
 import { useState } from "react";
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
-import { ImSpinner2 } from "react-icons/im"; 
-import { useNavigate } from "react-router-dom";
+import { ImSpinner2 } from "react-icons/im";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Login() {
-    const navigate = useNavigate();
+    const { signIn } = useAuth();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [dataForm, setDataForm] = useState({
@@ -26,25 +25,14 @@ export default function Login() {
         setLoading(true);
         setError("");
 
-        axios
-            .post("https://dummyjson.com/user/login", {
-                username: dataForm.email, 
-                password: dataForm.password,
-            })
-            .then((response) => {
-                localStorage.setItem("token", response.data.token);
-                navigate("/");
-            })
-            .catch((err) => {
-                if (err.response) {
-                    setError(err.response.data.message || "An error occurred");
-                } else {
-                    setError(err.message || "An unknown error occurred");
-                }
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        try {
+            await signIn(dataForm.email, dataForm.password);
+            // GuestRoute in App.jsx handles redirect based on role
+        } catch (err) {
+            setError(err.message || "An error occurred");
+        } finally {
+            setLoading(false);
+        }
     };
 
     const errorInfo = error ? (
@@ -73,15 +61,15 @@ export default function Login() {
             <form onSubmit={handleSubmit}>
                 <div className="mb-5">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email / Username
+                        Email Address
                     </label>
                     <input
-                        type="text"
+                        type="email"
                         name="email"
                         id="email"
                         className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400"
                         onChange={handleChange}
-                        placeholder="emilys"
+                        placeholder="you@example.com"
                     />
                 </div>
                 <div className="mb-6">

@@ -1,16 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageHeader from "../../components/PageHeader";
-
-const customers = Array.from({ length: 30 }, (_, i) => ({
-  id: `CUST-${100 + i}`,
-  name: `Customer ${i + 1}`,
-  email: `customer${i + 1}@mail.com`,
-  phone: `08123${i}4567`,
-  loyalty: ["Bronze", "Silver", "Gold"][i % 3],
-}));
+import { fetchProfiles, updateProfile } from "@/services/supabaseAPI";
 
 export default function Customers() {
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [formData, setFormData] = useState({ full_name: "", role: "member", tier: "Bronze", points: 0 });
+
+  const loadProfiles = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchProfiles();
+      setCustomers(data);
+    } catch (err) {
+      console.error("Error fetching profiles:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadProfiles();
+  }, []);
+
+  const handleEdit = (profile) => {
+    setEditId(profile.id);
+    setFormData({
+      full_name: profile.full_name,
+      role: profile.role,
+      tier: profile.tier,
+      points: profile.points,
+    });
+    setShowForm(true);
+  };
+
+  const handleSave = async () => {
+    try {
+      await updateProfile(editId, {
+        full_name: formData.full_name,
+        role: formData.role,
+        tier: formData.tier,
+        points: parseInt(formData.points) || 0,
+      });
+      setShowForm(false);
+      setEditId(null);
+      loadProfiles();
+    } catch (err) {
+      console.error("Error updating profile:", err);
+      alert("Error updating profile: " + err.message);
+    }
+  };
+
+  const tierColor = (tier) => {
+    switch (tier) {
+      case "Platinum": return "text-purple-500 font-semibold";
+      case "Gold": return "text-yellow-500 font-semibold";
+      case "Silver": return "text-gray-500 font-semibold";
+      default: return "text-orange-500 font-semibold";
+    }
+  };
 
   return (
     <div className="p-5">
@@ -19,69 +69,104 @@ export default function Customers() {
         breadcrumb={["Dashboard", "Customers"]}
       >
         <button
-          onClick={() => setShowForm(true)}
+          onClick={() => { setShowForm(false); setEditId(null); }}
           className="bg-hijau text-white px-4 py-2 rounded-xl hover:opacity-90"
         >
-          Add Customer
+          Refresh
         </button>
       </PageHeader>
 
       {showForm && (
         <div className="bg-white p-5 rounded-xl mb-5 shadow-sm">
-          <h3 className="font-bold mb-3">Form Customer</h3>
+          <h3 className="font-bold mb-3">Edit Customer</h3>
 
-          <input className="border p-2 mb-2 w-full rounded" placeholder="Customer Name" />
-          <input className="border p-2 mb-2 w-full rounded" placeholder="Email" />
-          <input className="border p-2 mb-2 w-full rounded" placeholder="Phone" />
+          <input
+            className="border p-2 mb-2 w-full rounded"
+            placeholder="Full Name"
+            value={formData.full_name}
+            onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+          />
 
-          <select className="border p-2 mb-2 w-full rounded">
-            <option>Bronze</option>
-            <option>Silver</option>
-            <option>Gold</option>
+          <select
+            className="border p-2 mb-2 w-full rounded"
+            value={formData.role}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+          >
+            <option value="member">Member</option>
+            <option value="admin">Admin</option>
           </select>
 
-          <button
-            onClick={() => setShowForm(false)}
-            className="bg-red-500 text-white px-4 py-2 rounded-xl mt-2"
+          <select
+            className="border p-2 mb-2 w-full rounded"
+            value={formData.tier}
+            onChange={(e) => setFormData({ ...formData, tier: e.target.value })}
           >
-            Close
-          </button>
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
+          </select>
+
+          <input
+            type="number"
+            className="border p-2 mb-2 w-full rounded"
+            placeholder="Points"
+            value={formData.points}
+            onChange={(e) => setFormData({ ...formData, points: e.target.value })}
+          />
+
+          <div className="flex gap-2 mt-2">
+            <button
+              onClick={handleSave}
+              className="bg-hijau text-white px-4 py-2 rounded-xl hover:opacity-90"
+            >
+              Save
+            </button>
+            <button
+              onClick={() => { setShowForm(false); setEditId(null); }}
+              className="bg-red-500 text-white px-4 py-2 rounded-xl"
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
 
       <div className="bg-white p-5 rounded-xl shadow-sm">
 
-        <div className="grid grid-cols-5 font-bold text-gray-600 border-b pb-2 mb-2 text-sm">
-          <span>ID</span>
-          <span>Name</span>
-          <span>Email</span>
-          <span>Phone</span>
-          <span>Loyalty</span>
+        <div className="grid grid-cols-6 font-bold text-gray-600 border-b pb-2 mb-2 text-sm">
+          <span className="col-span-2">Name</span>
+          <span>Role</span>
+          <span>Points</span>
+          <span>Tier</span>
+          <span>Actions</span>
         </div>
 
-        {customers.map((c, i) => (
-          <div
-            key={i}
-            className="grid grid-cols-5 py-2 border-b text-sm items-center hover:bg-gray-50"
-          >
-            <span>{c.id}</span>
-            <span>{c.name}</span>
-            <span>{c.email}</span>
-            <span>{c.phone}</span>
-
-            <span
-              className={
-                c.loyalty === "Gold"
-                  ? "text-yellow-500 font-semibold"
-                  : c.loyalty === "Silver"
-                  ? "text-gray-500 font-semibold"
-                  : "text-orange-500 font-semibold"
-              }
+        {loading ? (
+          <div className="py-4 text-center text-gray-500">Loading...</div>
+        ) : customers.length === 0 ? (
+          <div className="py-4 text-center text-gray-500">No customers found</div>
+        ) : (
+          customers.map((c) => (
+            <div
+              key={c.id}
+              className="grid grid-cols-6 py-2 border-b text-sm items-center hover:bg-gray-50"
             >
-              {c.loyalty}
-            </span>
-          </div>
-        ))}
+              <span className="col-span-2">{c.full_name}</span>
+              <span className={c.role === "admin" ? "text-blue-600 font-semibold capitalize" : "text-gray-600 capitalize"}>{c.role}</span>
+              <span>{c.points}</span>
+              <span className={tierColor(c.tier)}>{c.tier}</span>
+              <span>
+                <button
+                  onClick={() => handleEdit(c)}
+                  className="text-blue-600 hover:underline text-xs font-medium"
+                >
+                  Edit
+                </button>
+              </span>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

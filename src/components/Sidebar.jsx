@@ -1,7 +1,10 @@
-import { MdDashboard, MdListAlt, MdPeople, MdAdd } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { MdDashboard, MdListAlt, MdPeople, MdAdd, MdLogout } from "react-icons/md";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Sidebar() {
+    const { signOut } = useAuth();
+    const navigate = useNavigate();
 
     const menuClass = ({ isActive }) =>
         `flex cursor-pointer items-center rounded-xl p-4 space-x-2
@@ -114,6 +117,21 @@ export default function Sidebar() {
                         alt="avatar"
                     />
                 </div>
+
+                <button
+                    onClick={async () => {
+                        try {
+                            await signOut();
+                            navigate("/login");
+                        } catch (err) {
+                            console.error(err);
+                        }
+                    }}
+                    className="flex items-center rounded-xl p-4 space-x-2 text-red-500 hover:bg-red-50 hover:font-extrabold cursor-pointer w-full mb-4"
+                >
+                    <MdLogout className="mr-4 text-xl" />
+                    <span>Logout</span>
+                </button>
 
                 <span className="font-bold text-gray-400">
                     Sedap Restaurant Admin Dashboard
